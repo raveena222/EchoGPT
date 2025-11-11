@@ -1,9 +1,10 @@
+import Dashboard from "./Dashboard/Dashboard";
 
 
 function App() {
   return (
     <div className="App">
-      Hello
+      <Dashboard />
     </div>
   );
 }
