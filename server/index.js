@@ -1,19 +1,23 @@
-const express= require('express')
-const http= require('http')
-const cors= require('cors')
+import express from "express";
+import http from "http";
+import cors from "cors";
+import { registerSocketServer } from "./src/socketServer.js";
 
-const app= express()
+const app = express();
 
-const server= http.createServer(app)
+const server = http.createServer(app);
 
-app.use(cors())
+// register socket server
+registerSocketServer(server);
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
+app.use(cors());
+
+app.get("/", (req, res) => {
+  res.send("Hello World!");
 });
 
-const PORT= process.env.PORT || 5000
+const PORT = process.env.PORT || 5000;
 
 server.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-})
+  console.log(`Server is running on port ${PORT}`);
+});
